@@ -97,26 +97,30 @@ function resetGame() {
 }
 
 function keyPressed() {
-  if (keyCode !== UP_ARROW && keyCode !== DOWN_ARROW && keyCode !== LEFT_ARROW && keyCode !== RIGHT_ARROW) {
-    return;
-  }
-
   if (gameOver) {
-    resetGame();
+    if (
+      keyCode === UP_ARROW || keyCode === DOWN_ARROW || 
+      keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW ||
+      key === 'w' || key === 'W' || key === 's' || key === 'S' ||
+      key === 'a' || key === 'A' || key === 'd' || key === 'D'
+    ) {
+      resetGame();
+      return;
+    }
   }
 
   if (keyCode === UP_ARROW || key === 'w' || key === 'W') {
     snake.dir(0, -1);
-  }
-
+  } 
+  
   else if (keyCode === DOWN_ARROW || key === 's' || key === 'S') {
     snake.dir(0, 1);
-  }
-
+  } 
+  
   else if (keyCode === LEFT_ARROW || key === 'a' || key === 'A') {
     snake.dir(-1, 0);
   } 
-
+  
   else if (keyCode === RIGHT_ARROW || key === 'd' || key === 'D') {
     snake.dir(1, 0);
   }
