@@ -9,6 +9,7 @@ function Snake() {
       this.total++;
       return true;
     }
+    
     return false;
   }
 
@@ -34,9 +35,11 @@ function Snake() {
 
   this.checkCollision = function() {
     for (let i = 0; i < this.tail.length; i++) {
+
       if (this.head.x === this.tail[i].x && this.head.y === this.tail[i].y) {
         return true;
       }
+
     }
     return false;
   }
@@ -45,24 +48,31 @@ function Snake() {
     if (this.head.x === pos.x && this.head.y === pos.y) {
       return true;
     }
+
     for (let i = 0; i < this.tail.length; i++) {
+
       if (this.tail[i].x === pos.x && this.tail[i].y === pos.y) {
         return true;
       }
     }
+
     return false;
   }
 
   this.wrap = function() {
     if (this.head.x >= width) {
       this.head.x = 0;
-    } else if (this.head.x < 0) {
+    } 
+    
+    else if (this.head.x < 0) {
       this.head.x = width - scl;
     }
 
     if (this.head.y >= height) {
       this.head.y = 0;
-    } else if (this.head.y < 0) {
+    } 
+    
+    else if (this.head.y < 0) {
       this.head.y = height - scl;
     }
   }

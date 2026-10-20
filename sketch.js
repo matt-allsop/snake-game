@@ -22,9 +22,11 @@ function draw() {
 
   if (!gameOver) {
     snake.update();
+
     if (snake.checkCollision()) {
       gameOver = true;
     }
+    
     if (snake.eat(food)) {
       score++;
       pickLocation();
@@ -43,9 +45,11 @@ function draw() {
 function drawGrid() {
   stroke(48); 
   strokeWeight(1);
+
   for (let x = 0; x <= width; x += scl) {
     line(x, 0, x, height);
   }
+
   for (let y = 0; y <= height; y += scl) {
     line(0, y, width, y);
   }
@@ -101,13 +105,19 @@ function keyPressed() {
     resetGame();
   }
 
-  if (keyCode === UP_ARROW) {
+  if (keyCode === UP_ARROW || key === 'w' || key === 'W') {
     snake.dir(0, -1);
-  } else if (keyCode === DOWN_ARROW) {
+  }
+
+  else if (keyCode === DOWN_ARROW || key === 's' || key === 'S') {
     snake.dir(0, 1);
-  } else if (keyCode === LEFT_ARROW) {
+  }
+
+  else if (keyCode === LEFT_ARROW || key === 'a' || key === 'A') {
     snake.dir(-1, 0);
-  } else if (keyCode === RIGHT_ARROW) {
-    snake .dir(1, 0);
+  } 
+
+  else if (keyCode === RIGHT_ARROW || key === 'd' || key === 'D') {
+    snake.dir(1, 0);
   }
 }
